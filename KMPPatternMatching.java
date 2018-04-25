@@ -9,23 +9,18 @@ public class KMPPatternMatching {
 	private static void KMPSearch(String text, String pattern) {
 		int arr[] = new int[pattern.length()];
 		calculateArray(pattern, arr);
-		int i=0,j=0;
-		while(i<text.length())
-		{
-			if(pattern.charAt(j)==text.charAt(i))
-			{
+		int i = 0, j = 0;
+		while (i < text.length()) {
+			if (pattern.charAt(j) == text.charAt(i)) {
 				i++;
 				j++;
 			}
-			if(j==pattern.length())
-			{
-				System.out.println("Pattern Found At "+(i-j));
-				j=arr[j-1];
-			}
-			else if(i<text.length() && pattern.charAt(j)!=text.charAt(i))
-			{
-				if(j!=0)
-					j=arr[j-1];
+			if (j == pattern.length()) {
+				System.out.println("Pattern Found At " + (i - j));
+				j = arr[j - 1];
+			} else if (i < text.length() && pattern.charAt(j) != text.charAt(i)) {
+				if (j != 0)
+					j = arr[j - 1];
 				else
 					i++;
 			}
