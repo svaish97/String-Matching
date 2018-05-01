@@ -1,13 +1,20 @@
 
 public class wildCardPatternMatching {
 	public static void main(String[] args) {
-		System.out.println(matchstring("xaylmz", "x?y*z"));
+		System.out.println(matchstring("xaylmz", "*x?y*z"));
 
 	}
 
 	private static boolean matchstring(String string, String string2) {
 		boolean T[][] = new boolean[string.length() + 1][string2.length() + 1];
+
 		T[0][0] = true;
+
+		for (int j = 1; j <= string2.length(); j++) {
+			if (string2.charAt(j - 1) == '*') {
+				T[0][j] = T[0][j - 1];
+			}
+		}
 
 		for (int i = 1; i <= string.length(); i++) {
 			for (int j = 1; j <= string2.length(); j++) {
